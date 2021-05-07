@@ -1,0 +1,33 @@
+.GitHubButton {
+  background-color: hsl(0, 3%, 23%);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.08rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+  overflow: hidden;
+
+  height: 5.5rem;
+}
+
+.GitHubButton:hover {
+  background-color: hsl(0, 3%, 33%);
+}
+
+.GitHubIconWrapper {
+  /* padding: 1rem 1.3rem; */
+  margin-left: 1rem;
+  border-radius: 1rem;
+  /* background-color: #fff; */
+  background-color: inherit;
+}
+
+.GitHubButtonText {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 auto;
+}

@@ -1,0 +1,96 @@
+.Register {
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 3rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  --color-primary-light: hsl(28, 95%, 48%);
+  --color-primary-dark: hsl(8, 90%, 54%);
+
+  background: var(--color-primary-dark); /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top left,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top left,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.RegisterHeader {
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+  margin-bottom: 2rem;
+  text-shadow: 0.5rem 0.5rem 3rem hsla(20, 40%, 95%, 0.5);
+  width: 40rem;
+  text-align: center;
+}
+
+.RegisterContent {
+  --register-content-background-color: hsl(20, 40%, 95%);
+  --register-content-font-color: hsl(0, 96%, 45%);
+
+  --register-content-inner-border: 1px solid hsl(10, 10%, 80%);
+
+  --register-border-radius: 1rem;
+
+  background-color: var(--register-content-background-color);
+  color: var(--register-content-font-color);
+
+  font-size: 1.5rem;
+
+  width: 72.5rem;
+  border-radius: var(--register-border-radius);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.FeatureSection {
+  width: 55%;
+  padding: 4rem;
+}
+
+.Feature {
+  padding: 2rem 0;
+  border-bottom: var(--register-content-inner-border);
+}
+
+.Feature:first-child {
+  padding-top: 0;
+}
+
+.Feature:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.FeatureHeader {
+  display: flex;
+  align-items: flex-end;
+}
+
+.FeatureTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-left: 1.5rem;
+}
+
+.Icon {
+}
+
+.Description {
+  color: rgba(80, 80, 80, 1);
+  padding: 1.5rem 0;
+  line-height: 1.4;
+  letter-spacing: 0.04rem;
+}

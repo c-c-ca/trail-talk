@@ -1,0 +1,55 @@
+.Success {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.7);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.SuccessHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15rem;
+
+  background: #56ab2f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #a8e063,
+    #56ab2f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #a8e063,
+    #56ab2f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.IconWrapper,
+.IconShadowWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(4) translate(0.1rem, 0.2rem);
+}
+
+.IconShadowWrapper {
+  transform: scale(4) translate(-0.1rem, -0.2rem);
+}
+
+.SuccessContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+}
+
+.SuccessTitle {
+  font-size: 4.2rem;
+}
+
+.SuccessMessage {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 2rem 2rem 3rem;
+  line-height: 1.4;
+}

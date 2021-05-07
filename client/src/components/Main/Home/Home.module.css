@@ -1,0 +1,78 @@
+.Home {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url('../../../assets/img/hero.jpg');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 85vh;
+  color: #fff;
+}
+
+.TextContainer {
+  position: absolute;
+  top: 10rem;
+  left: 15rem;
+}
+
+.Title {
+  font-size: 5rem;
+  letter-spacing: 0.2rem;
+  text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem;
+
+  animation: moveInAbove 0.5s ease-out 0.1s;
+  animation-fill-mode: backwards;
+}
+
+.SubHeader > h3 {
+  font-size: 2.5rem;
+  letter-spacing: 0.15rem;
+  font-weight: 400;
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+.SubHeader {
+  margin-bottom: 4rem;
+}
+
+.SubHeader h3:nth-child(1) {
+  animation: fadeIn 0.6s ease-out 0.9s;
+  animation-fill-mode: backwards;
+}
+
+.SubHeader h3:nth-child(2) {
+  animation: fadeIn 0.6s ease-out 1.5s;
+  animation-fill-mode: backwards;
+}
+
+.SubHeader h3:nth-child(3) {
+  animation: fadeIn 0.6s ease-out 2.1s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes moveInAbove {
+  0% {
+    opacity: 0;
+    transform: translateY(-5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

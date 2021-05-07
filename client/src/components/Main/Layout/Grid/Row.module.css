@@ -1,0 +1,26 @@
+.Row {
+  max-width: 114rem;
+  margin: 0 auto;
+  position: relative;
+  --gutter-horizontal: 2rem;
+  --gutter-vertical: 15rem;
+  margin-bottom: 15rem;
+}
+
+.Row:last-child {
+  margin-bottom: 0;
+}
+
+.Row::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.Row > * {
+  margin-right: var(--gutter-horizontal);
+}
+
+.Row > *:last-child {
+  margin-right: 0;
+}

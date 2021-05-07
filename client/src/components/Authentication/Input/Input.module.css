@@ -1,0 +1,78 @@
+.FieldWrapper {
+  width: 100%;
+  margin-bottom: 2.5rem;
+
+  --field-border-radius: 0.8rem;
+}
+
+.Label {
+  display: inline-block;
+  padding-bottom: 0.8rem;
+
+  color: hsl(20, 30%, 45%);
+
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08rem;
+}
+
+.InputWrapper {
+  position: relative;
+  border-radius: var(--field-border-radius);
+
+  --input-border: 1px solid rgba(50, 50, 50, 0.2);
+  --icon-padding: 1.3rem;
+}
+
+.Input {
+  width: 100%;
+  padding: 1.3rem 5rem;
+
+  border-radius: var(--field-border-radius);
+  border: var(--input-border);
+
+  font-size: 1.5rem;
+
+  transition: all 0.3s;
+}
+
+.Input:active,
+.Input:focus {
+  border: 1px solid hsl(20, 89%, 70%);
+  box-shadow: 0.2rem 0.2rem 0.4rem rgb(193, 72, 11, 0.2);
+
+  outline: none;
+}
+
+.IconWrapperLeft {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+
+  padding: var(--icon-padding);
+  border-right: var(--input-border);
+}
+
+.IconWrapperRight {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+
+  padding: var(--icon-padding);
+}
+
+.Error {
+  background-color: hsl(0, 43%, 93%);
+  color: hsl(5, 90%, 40%);
+
+  border: 1px solid hsla(0, 94%, 37%, 0.2);
+  border-radius: var(--field-border-radius);
+
+  padding: 0.7rem;
+  margin-top: 0.5rem;
+
+  font-size: 1.1rem;
+  font-weight: 600;
+}

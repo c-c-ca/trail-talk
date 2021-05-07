@@ -1,0 +1,64 @@
+.Button,
+.Button:link,
+.Button:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 3rem;
+  display: inline-block;
+  transition: all 0.2s;
+  font-size: 1.2rem;
+  letter-spacing: 0.15rem;
+  border-radius: 0.7rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+
+  position: relative; /* ::after pseudoelement positioning */
+
+  animation: moveInButton 0.5s ease-out 2.7s;
+  animation-fill-mode: backwards;
+}
+
+.Button:hover,
+.Button:link:hover,
+.Button:visited:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.6);
+
+  background-color: rgba(inherit, 0.5);
+}
+
+.Button:hover:after,
+.Button:link:hover:after,
+.Button:visited:hover:after {
+  transform: scaleX(1.2) scaleY(1.4);
+  opacity: 0;
+}
+
+.Button::after,
+.Button:link::after,
+.Button:visited::after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  border-radius: inherit;
+  background-color: inherit;
+
+  transition: all 0.4s;
+}
+
+.Button:active,
+.Button:link:active,
+.Button:visited:active,
+.Button:focus,
+.Button:link:focus,
+.Button:visited:focus {
+  outline: none;
+  transform: translateY(-0.1rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+}

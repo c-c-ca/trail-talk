@@ -1,0 +1,24 @@
+.Login {
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  --color-primary-light: #fdc830;
+  --color-primary-dark: #f37335;
+
+  background: var(--color-primary-light); /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    var(--color-primary-dark),
+    var(--color-primary-light)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    var(--color-primary-dark),
+    var(--color-primary-light)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

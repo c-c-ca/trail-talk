@@ -1,0 +1,68 @@
+.Icon {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.IconMedium {
+  --medium-icon-size: 2.3rem;
+
+  height: var(--medium-icon-size);
+  width: var(--medium-icon-size);
+}
+
+.IconLarge {
+  height: 2.8rem;
+  width: 2.8rem;
+}
+
+.IconGoogle {
+  height: 2.3rem;
+  width: 2.3rem;
+}
+
+.IconFacebookWrapper {
+  --facebook-icon-size: 3.3rem;
+  height: var(--facebook-icon-size);
+  width: var(--facebook-icon-size);
+
+  background-color: inherit;
+  border-radius: 0.5rem;
+}
+
+.IconFacebook {
+  height: var(--facebook-icon-size);
+  width: var(--facebook-icon-size);
+}
+
+.IconTwitterWrapper {
+  --twitter-icon-size: 3rem;
+  height: var(--twitter-icon-size);
+  width: var(--twitter-icon-size);
+
+  background-color: inherit;
+  border-radius: 0.5rem;
+}
+
+.IconTwitter {
+  height: var(--twitter-icon-size);
+  width: var(--twitter-icon-size);
+}
+
+.IconGitHubWrapper {
+  --github-icon-size: 3rem;
+  height: var(--github-icon-size);
+  width: var(--github-icon-size);
+
+  background-color: inherit;
+  border-radius: 0.5rem;
+}
+
+.IconGitHub {
+  height: var(--github-icon-size);
+  width: var(--github-icon-size);
+}
+
+.IconHappy {
+  height: 3.2rem;
+  width: 3.2rem;
+}

@@ -1,0 +1,30 @@
+.GoogleButton {
+  background-color: hsl(220, 90%, 55%);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.08rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+  height: 5.5rem;
+}
+
+.GoogleButton:hover {
+  background-color: hsl(220, 90%, 60%);
+}
+
+.GoogleIconWrapper {
+  padding: 1rem 1.3rem;
+  margin-left: 0.3rem;
+  border-radius: 1rem;
+  background-color: #fff;
+}
+
+.GoogleButtonText {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 auto;
+}
