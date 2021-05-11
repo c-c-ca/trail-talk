@@ -56,6 +56,7 @@ passport.use(
       consumerKey: twitterConsumerKey,
       consumerSecret: twitterConsumerSecret,
       callbackURL: '/auth/twitter/callback',
+      proxy: true,
     },
     async (token, tokenSecret, profile, done) => {
       const { id: twitterId } = profile;
