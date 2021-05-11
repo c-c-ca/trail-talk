@@ -57,10 +57,12 @@ passport.use(
       consumerSecret: twitterConsumerSecret,
       callbackURL: '/auth/twitter/callback',
     },
-    function (token, tokenSecret, profile, done) {
-      User.findOrCreate({ twitterId: profile.id }, function (err, user) {
-        return done(err, user);
-      });
+    async (token, tokenSecret, profile, done) => {
+      const { id: twitterId } = profile;
+      done(
+        (await User.findOne({ twitterId })) ||
+          (await new User({ twitterId }).save())
+      );
     }
   )
 );
