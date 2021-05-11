@@ -1,5 +1,5 @@
 const sgMail = require('@sendgrid/mail');
-const { sendGridKey, sendGridEmail } = require('../config/dev');
+const { sendGridKey, sendGridEmail } = require('../config/keys');
 sgMail.setApiKey(sendGridKey);
 
 const embedToken = (domain, token) =>
