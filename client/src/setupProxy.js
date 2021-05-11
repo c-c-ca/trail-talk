@@ -4,6 +4,7 @@ module.exports = function (app) {
     [
       '/api',
       '/auth/google',
+      '/auth/twitter',
       '/auth/register',
       '/auth/login',
       '/auth/verify-email',

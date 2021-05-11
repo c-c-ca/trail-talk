@@ -53,7 +53,7 @@ class LoginForm extends Component {
           <FacebookButton text="Sign In with Facebook" />
           <GitHubButton text="Sign In with GitHub" />
           <GoogleButton text="Sign In With Google" to="/auth/google" />
-          <TwitterButton text="Sign In with Twitter" />
+          <TwitterButton text="Sign In with Twitter" to="/auth/twitter" />
         </div>
       </div>
     );

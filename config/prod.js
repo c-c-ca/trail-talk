@@ -8,6 +8,8 @@ const {
   SIGHT_ENGINE_URI,
   SIGHT_ENGINE_API_USER,
   SIGHT_ENGINE_API_SECRET,
+  TWITTER_CONSUMER_KEY,
+  TWITTER_CONSUMER_SECRET,
 } = process.env;
 
 module.exports = {
@@ -20,4 +22,6 @@ module.exports = {
   sightengineURI: SIGHT_ENGINE_URI,
   sightengineAPIUser: SIGHT_ENGINE_API_USER,
   sightengineAPISecret: SIGHT_ENGINE_API_SECRET,
+  twitterConsumerKey: TWITTER_CONSUMER_KEY,
+  twitterConsumerSecret: TWITTER_CONSUMER_SECRET,
 };

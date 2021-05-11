@@ -1,9 +1,15 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
 const LocalStrategy = require('passport-local');
 const mongoose = require('mongoose');
 const generateToken = require('../utils/generateToken');
-const { googleClientID, googleClientSecret } = require('../config/keys');
+const {
+  googleClientID,
+  googleClientSecret,
+  twitterConsumerKey,
+  twitterConsumerSecret,
+} = require('../config/keys');
 
 const User = mongoose.model('users');
 
@@ -40,6 +46,21 @@ passport.use(
           usernameToken: generateToken(),
         }).save()
       );
+    }
+  )
+);
+
+passport.use(
+  new TwitterStrategy(
+    {
+      consumerKey: twitterConsumerKey,
+      consumerSecret: twitterConsumerSecret,
+      callbackURL: '/auth/twitter/callback',
+    },
+    function (token, tokenSecret, profile, done) {
+      User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+        return done(err, user);
+      });
     }
   )
 );

@@ -2,8 +2,8 @@ import React from 'react';
 import { IconTwitter } from '../../Icon/Icon';
 import styles from './TwitterButton.module.css';
 
-const TwitterButton = ({ text }) => (
-  <a className={styles.TwitterButton} href="/auth/Twitter">
+const TwitterButton = ({ text, to }) => (
+  <a className={styles.TwitterButton} href={to}>
     <div className={styles.TwitterIconWrapper}>
       <IconTwitter />
     </div>

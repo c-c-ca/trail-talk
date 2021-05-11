@@ -102,8 +102,8 @@ class RegisterForm extends Component {
       <div className={styles.ThirdPartyButtonContainer}>
         <FacebookButton text="Sign Up with Facebook" />
         <GitHubButton text="Sign Up with GitHub" />
-        <GoogleButton text="Sign Up With Google" to={'/auth/google'} />
-        <TwitterButton text="Sign Up with Twitter" />
+        <GoogleButton text="Sign Up With Google" to="/auth/google" />
+        <TwitterButton text="Sign Up with Twitter" to="/auth/twitter" />
       </div>
     </div>
   );

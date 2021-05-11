@@ -27,6 +27,17 @@ module.exports = app => {
     }
   );
 
+  app.get('/auth/twitter', passport.authenticate('twitter'));
+
+  app.get(
+    '/auth/twitter/callback',
+    passport.authenticate('twitter', { failureRedirect: '/login' }),
+    function (req, res) {
+      // Successful authentication, redirect home.
+      res.redirect('/');
+    }
+  );
+
   app.get('/api/current-user', (req, res) => {
     res.send(req.user);
   });
@@ -153,6 +164,13 @@ module.exports = app => {
       failureRedirect: '/auth/login-failure',
     }),
     (req, res) => {
+      if (!req.user.isActive) {
+        req.logout();
+        res.send({
+          success: false,
+          message: 'Please check your inbox to activate your account',
+        });
+      }
       res.send({ success: true });
     }
   );
