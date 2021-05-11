@@ -61,6 +61,7 @@ passport.use(
     async (token, tokenSecret, profile, done) => {
       const { id: twitterId } = profile;
       done(
+        null,
         (await User.findOne({ twitterId })) ||
           (await new User({ twitterId }).save())
       );
