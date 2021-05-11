@@ -13,7 +13,9 @@ const Home = () => (
           <h3>Share.</h3>
           <h3>Learn.</h3>
         </div>
-        <Button text="Take The First Step" level="warm" to="/trails/new" />
+        <div className={styles.ButtonWrapper}>
+          <Button text="Register Now" level="warm" to="/register" />
+        </div>
       </div>
     </Row>
   </div>

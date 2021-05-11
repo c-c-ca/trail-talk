@@ -12,7 +12,7 @@ const style = {
     };
     return {
       backgroundColor: colors[level],
-      color: level == 'fun' ? '#000' : '#fff',
+      color: level === 'fun' ? '#000' : '#fff',
     };
   },
 };

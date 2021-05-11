@@ -6,8 +6,8 @@ import Success from './Success/Success';
 
 import { IconHappy, IconChat, IconCompass } from '../Icon/Icon';
 
-const renderFeature = ({ icon, title, description }) => (
-  <div className={styles.Feature}>
+const renderFeature = ({ icon, title, description }, key) => (
+  <div className={styles.Feature} key={key}>
     <div className={styles.FeatureHeader}>
       <div className={styles.Icon}>{icon}</div>
       <h2 className={styles.FeatureTitle}>{title}</h2>
@@ -40,7 +40,7 @@ const renderFeatureSection = () => {
 
   return (
     <div className={styles.FeatureSection}>
-      {features.map(props => renderFeature(props))}
+      {features.map((props, i) => renderFeature(props, i))}
     </div>
   );
 };

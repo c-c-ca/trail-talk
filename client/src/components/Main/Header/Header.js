@@ -12,20 +12,23 @@ class Header extends Component {
         return;
       case false:
         return [
-          <li>
-            <Link to="/login">Sign In</Link>
-          </li>,
-          <li>
-            <Link to="/register">Register</Link>
+          <li key="1">
+            <Link className={styles.HeaderButton} to="/login">
+              Sign In
+            </Link>
           </li>,
         ];
       default:
         return [
           <li key="1">
-            <Link to="/trails">Discuss</Link>
+            <Link className={styles.HeaderButton} to="/trails">
+              Discuss
+            </Link>
           </li>,
           <li key="2">
-            <a href="/api/logout">Logout</a>
+            <a className={styles.HeaderButton} href="/api/logout">
+              Logout
+            </a>
           </li>,
         ];
     }
@@ -36,7 +39,9 @@ class Header extends Component {
       <nav className={styles.Header}>
         <Row>
           <div className={styles.HeaderContainer}>
-            <Link to="/">Trail Talk</Link>
+            <Link className={styles.HeaderButton} to="/">
+              Trail Talk
+            </Link>
             <ul className={styles.Buttons}>{this.renderContent()}</ul>
           </div>
         </Row>

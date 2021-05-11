@@ -10,7 +10,7 @@ const style = {
       fun: 'hsl(150, 95%, 60%)',
       success: '#56ab2f',
     };
-    return {};
+    return colors[level];
   },
 };
 

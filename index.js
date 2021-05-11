@@ -1,10 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const expressSanitizer = require('express-sanitizer');
 const { mongoURI, cookieKey } = require('./config/keys');
 require('./models/User');
 require('./services/passport');
+require('./services/sendgrid');
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
@@ -13,6 +16,9 @@ mongoose.connect(mongoURI, {
 });
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(expressSanitizer());
 
 app.use(
   cookieSession({
@@ -23,6 +29,8 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(require('./middlewares/sanitizeBody'));
 
 require('./routes/authRoutes')(app);
 

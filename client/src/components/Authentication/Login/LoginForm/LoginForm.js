@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Field } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
+import { connect } from 'react-redux';
+import axios from 'axios';
 import styles from './LoginForm.module.css';
+import * as actions from '../../../../actions';
+import history from '../../../../history';
 
 import Input from '../../Input/Input';
 import GoogleButton from '../../Button/GoogleButton/GoogleButton';
@@ -15,83 +20,103 @@ import {
   validatePassword,
 } from '../../../../utils/validation';
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+class LoginForm extends Component {
+  onSubmit = async ({ username, password }) => {
+    const { success, message } = (
+      await axios.post('/auth/login', { username, password })
+    ).data;
 
-const onSubmit = async () => {
-  await sleep(5000);
-  return {
-    [FORM_ERROR]: 'You have entered an invalid username or password.',
+    if (!success) {
+      return { [FORM_ERROR]: message };
+    }
+
+    this.props.fetchUser();
+    history.push('/');
   };
-};
 
-const renderForm = () => (
-  <Form onSubmit={onSubmit}>
-    {({ handleSubmit, submitting, submitError }) => (
-      <form className={styles.Form} onSubmit={handleSubmit}>
-        {submitError && renderSubmitError(submitError)}
-        <Field
-          name="username"
-          type="text"
-          placeholder="Username"
-          validate={validateUsernameLogin}
-          component={Input}
-        />
-        <Field
-          name="password"
-          type="password"
-          placeholder="Password"
-          validate={validatePassword}
-          component={Input}
-        />
-        {renderSubmitButton(submitting)}
-      </form>
-    )}
-  </Form>
-);
+  renderSignUpSection() {
+    return (
+      <div className={styles.SignUp}>
+        New to TrailTalk?
+        <Link className={styles.SignUpLink} to="/register">
+          Sign Up
+        </Link>
+      </div>
+    );
+  }
 
-const renderSubmitError = submitError => (
-  <div className={`${styles.Error} ${styles.SubmitError}`}>{submitError}</div>
-);
+  renderThirdPartyButtons() {
+    return (
+      <div className={styles.ThirdPartyButtons}>
+        <h3 className={styles.ThirdPartyHeader}>Or Sign In with</h3>
+        <div className={styles.ThirdPartyButtonContainer}>
+          <FacebookButton text="Sign In with Facebook" />
+          <GitHubButton text="Sign In with GitHub" />
+          <GoogleButton text="Sign In With Google" to="/auth/google" />
+          <TwitterButton text="Sign In with Twitter" />
+        </div>
+      </div>
+    );
+  }
 
-const renderSubmitButton = submitting => (
-  <button className={styles.SubmitButton}>
-    <div className={submitting && styles.Hidden}>Log In</div>
-    <div className={styles.LoaderWrapper}>
-      {submitting && <Loader color="white" />}
-    </div>
-  </button>
-);
+  renderSubmitButton(submitting) {
+    return (
+      <button className={styles.SubmitButton}>
+        <div className={submitting ? styles.Hidden : null}>Log In</div>
+        <div className={styles.LoaderWrapper}>
+          {submitting && <Loader color="white" />}
+        </div>
+      </button>
+    );
+  }
 
-const renderThirdPartyButtons = () => (
-  <div className={styles.ThirdPartyButtons}>
-    <h3 className={styles.ThirdPartyHeader}>Or Sign In with</h3>
-    <div className={styles.ThirdPartyButtonContainer}>
-      <FacebookButton text="Sign In with Facebook" />
-      <GitHubButton text="Sign In with GitHub" />
-      <GoogleButton text="Sign In With Google" to="/auth/google" />
-      <TwitterButton text="Sign In with Twitter" />
-    </div>
-  </div>
-);
+  renderSubmitError(submitError) {
+    return (
+      <div className={`${styles.Error} ${styles.SubmitError}`}>
+        {submitError}
+      </div>
+    );
+  }
 
-const renderSignUpSection = () => (
-  <div className={styles.SignUp}>
-    New to TrailTalk?
-    <a className={styles.SignUpLink} href="#">
-      Sign Up
-    </a>
-  </div>
-);
+  renderForm() {
+    return (
+      <Form onSubmit={this.onSubmit}>
+        {({ handleSubmit, submitting, submitError }) => (
+          <form className={styles.Form} onSubmit={handleSubmit}>
+            {submitError && this.renderSubmitError(submitError)}
+            <Field
+              name="username"
+              type="text"
+              placeholder="Username"
+              validate={validateUsernameLogin}
+              component={Input}
+            />
+            <Field
+              name="password"
+              type="password"
+              placeholder="Password"
+              validate={validatePassword}
+              component={Input}
+            />
+            {this.renderSubmitButton(submitting)}
+          </form>
+        )}
+      </Form>
+    );
+  }
 
-const LoginForm = () => (
-  <div className={styles.LoginForm}>
-    <div className={styles.FormWrapper}>
-      <h1 className={styles.Header}>Log in to your account</h1>
-      {renderForm()}
-      {renderThirdPartyButtons()}
-    </div>
-    {renderSignUpSection()}
-  </div>
-);
+  render() {
+    return (
+      <div className={styles.LoginForm}>
+        <div className={styles.FormWrapper}>
+          <h1 className={styles.Header}>Log in to your account</h1>
+          {this.renderForm()}
+          {this.renderThirdPartyButtons()}
+        </div>
+        {this.renderSignUpSection()}
+      </div>
+    );
+  }
+}
 
-export default LoginForm;
+export default connect(null, actions)(LoginForm);

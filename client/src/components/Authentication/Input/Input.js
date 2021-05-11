@@ -67,7 +67,7 @@ const renderInput = (placeholder, input) => (
 
 const Input = ({ placeholder, input, meta }) => (
   <div className={styles.FieldWrapper}>
-    <label className={styles.Label} for={placeholder}>
+    <label className={styles.Label} htmlFor={placeholder}>
       {placeholder}
     </label>
     <div className={styles.InputWrapper}>

@@ -25,7 +25,7 @@
   justify-content: flex-end;
 }
 
-.Header a {
+.HeaderButton {
   display: block;
   color: #fff;
   text-decoration: none;
@@ -35,8 +35,28 @@
   letter-spacing: 0.25rem;
   padding: 2rem;
   transition: all 0.2s;
+  position: relative;
 }
 
-.Header a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+.HeaderButton::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  background-color: hsl(28, 100%, 55%);
+  transform: scaleX(0.1);
+  transform-origin: bottom center;
+  transition: height 0.2s ease-in, transform 0.4s cubic-bezier(1, 0, 0, 1) 0.2s;
 }
+
+.HeaderButton:hover::before,
+.HeaderButton--active::before {
+  transform: scaleX(1);
+  height: 0.3rem;
+}
+
+/* .HeaderButton:active::before {
+  background-color: var(--color-primary-light);
+} */

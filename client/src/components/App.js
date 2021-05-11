@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import history from '../history';
 
 import Main from './Main/Main';
 import Authentication from './Authentication/Authentication';
@@ -14,12 +15,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BrowserRouter>
+        <Router history={history}>
           <div>
             <Route path="/" exact component={Main} />
             <Route path="/" component={Authentication} />
           </div>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }

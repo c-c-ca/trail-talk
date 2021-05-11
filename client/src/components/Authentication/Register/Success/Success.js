@@ -1,13 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Success.module.css';
+import history from '../../../../history';
 
 import Modal from '../../Modal/Modal';
-import { IconCheck } from '../../Icon/Icon';
+import { IconCheck, IconCross } from '../../Icon/Icon';
 
 const Success = () => (
-  <Modal>
+  <Modal onDismiss={() => history.push('/')}>
     <div className={styles.Success}>
       <div className={styles.SuccessHeader}>
+        <Link to="/" className={styles.IconCrossWrapper}>
+          <IconCross fill="#fff" />
+        </Link>
         <div className={styles.IconShadowWrapper}>
           <IconCheck fill="rgba(0,0,0,0.15)" />
         </div>

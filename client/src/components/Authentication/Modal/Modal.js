@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Modal.module.css';
 
-const Modal = ({ children }) =>
+const Modal = ({ onDismiss, children }) =>
   ReactDOM.createPortal(
-    <div className={styles.Modal}>
-      <div className={styles.ModalContent}>{children}</div>
+    <div onClick={onDismiss} className={styles.Modal}>
+      <div onClick={e => e.stopPropagation()} className={styles.ModalContent}>
+        {children}
+      </div>
     </div>,
     document.querySelector('#modal')
   );

@@ -1,0 +1,134 @@
+.UsernameForm {
+  --submit-button-color-primary-light: hsl(33, 100%, 50%);
+  --submit-button-color-primary-dark: hsl(13, 100%, 49%);
+
+  --submit-button-color-primary-light-hover: hsl(33, 100%, 60%);
+  --submit-button-color-primary-dark-hover: hsl(13, 100%, 59%);
+
+  --submit-button-color-primary-light-disabled: hsl(33, 100%, 40%);
+  --submit-button-color-primary-dark-disabled: hsl(13, 100%, 39%);
+
+  --login-form-background-color: hsl(20, 40%, 95%);
+  --login-form-bottom-panel-background-color: hsl(10, 20%, 90%);
+  --login-form-inner-border: 1px solid hsl(10, 10%, 80%);
+
+  --header-color: hsl(10, 70%, 60%);
+  --header-text-shadow-color: hsla(20, 90%, 40%, 0.6);
+  --sign-up-color: rgba(0, 0, 0, 1);
+  --sign-up-link-color: hsl(20, 95%, 50%);
+
+  --submit-error-background-color: hsl(10, 80%, 45%);
+
+  width: 46rem;
+  border-radius: 1rem;
+
+  background-color: var(--login-form-background-color);
+
+  overflow: hidden;
+}
+
+.FormWrapper {
+  padding: 4rem 4rem 0;
+}
+
+.Header {
+  color: var(--header-color);
+
+  font-size: 3rem;
+  /* text-shadow: 0.5rem 0.5rem 2.5rem var(--header-text-shadow-color); */
+  font-weight: 300;
+  letter-spacing: 0.15rem;
+  text-align: center;
+}
+
+.SubHeader {
+  /* color: var(--header-color); */
+  background-color: var(--login-form-bottom-panel-background-color);
+  color: var(--sign-up-color);
+  /* background-color: #fff; */
+
+  font-size: 1.5rem;
+  margin-top: 2rem;
+
+  padding: 1rem 0;
+  border: var(--login-form-inner-border);
+  border-radius: 0.8rem;
+
+  /* text-shadow: 0.5rem 0.5rem 2.5rem var(--header-text-shadow-color); */
+  font-weight: 300;
+  text-align: center;
+}
+
+.Form {
+  padding: 2.5rem 0 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.SubmitButton {
+  background-image: linear-gradient(
+    to right,
+    var(--submit-button-color-primary-light),
+    var(--submit-button-color-primary-dark)
+  );
+  color: #fff;
+
+  font-size: 1.8rem;
+  font-weight: 100;
+
+  width: 100%;
+  padding: 1.2rem 0;
+  margin: 1rem 0;
+
+  border-radius: 0.8rem;
+  border: none;
+  outline: none;
+
+  position: relative;
+}
+
+:not(.ButtonDisabled).SubmitButton:hover {
+  background-image: linear-gradient(
+    to right,
+    var(--submit-button-color-primary-light-hover),
+    var(--submit-button-color-primary-dark-hover)
+  );
+
+  cursor: pointer;
+}
+
+.ButtonDisabled {
+  background-image: linear-gradient(
+    to right,
+    var(--submit-button-color-primary-light-disabled),
+    var(--submit-button-color-primary-dark-disabled)
+  );
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.Hidden {
+  visibility: hidden;
+}
+
+.SubmitError {
+  background-color: var(--submit-error-background-color);
+  color: #fff;
+
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-align: center;
+
+  border-radius: 0.8rem;
+
+  width: 100%;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.LoaderWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
