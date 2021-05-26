@@ -363,9 +363,8 @@ router.get('/edit-email', async (req, res) => {
 });
 
 router.post('/api/delete-user', async (req, res) => {
-  const { user } = req;
+  await User.findByIdAndDelete(req.user.id);
   req.logout();
-  await User.findByIdAndDelete(user.id);
   res.send({ success: true });
 });
 
