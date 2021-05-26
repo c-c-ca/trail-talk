@@ -138,6 +138,7 @@ class ProfileForm extends Component {
 
   deleteAccount = async () => {
     await axios.post('/api/delete-user');
+    this.props.fetchUser();
     history.push('/');
   };
 
