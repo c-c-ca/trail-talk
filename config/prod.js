@@ -12,6 +12,8 @@ const {
   TWITTER_CONSUMER_SECRET,
   GITHUB_CLIENT_ID,
   GITHUB_CLIENT_SECRET,
+  FACEBOOK_APP_ID,
+  FACEBOOK_APP_SECRET,
 } = process.env;
 
 module.exports = {
