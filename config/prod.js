@@ -14,6 +14,7 @@ const {
   GITHUB_CLIENT_SECRET,
   FACEBOOK_APP_ID,
   FACEBOOK_APP_SECRET,
+  ADMIN_EMAIL,
 } = process.env;
 
 module.exports = {
@@ -32,4 +33,5 @@ module.exports = {
   facebookAppSecret: FACEBOOK_APP_SECRET,
   githubClientID: GITHUB_CLIENT_ID,
   githubClientSecret: GITHUB_CLIENT_SECRET,
+  adminEmail: ADMIN_EMAIL,
 };

@@ -1,5 +1,5 @@
 const sgMail = require('@sendgrid/mail');
-const { sendGridKey, sendGridEmail } = require('../config/keys');
+const { sendGridKey, sendGridEmail, adminEmail } = require('../config/keys');
 sgMail.setApiKey(sendGridKey);
 
 const renderText = (url, text) => `${text}: ${url}`;
@@ -83,6 +83,22 @@ module.exports.sendEmailResetEmail = async (email, domain, token) => {
       subject: `Trail Talk | Reset Email`,
       text: textMessage,
       html: htmlMessage,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports.emailAdmin = async email => {
+  try {
+    const textMessage = `User with email ${email} just joined.`;
+
+    await sgMail.send({
+      to: adminEmail,
+      from: sendGridEmail,
+      subject: `Trail Talk | New User Joined!`,
+      text: textMessage,
+      html: textMessage,
     });
   } catch (error) {
     console.log(error);

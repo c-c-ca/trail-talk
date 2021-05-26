@@ -20,6 +20,7 @@ const {
   sendPasswordRecoveryEmail,
   sendEmailCollisionEmail,
   sendEmailResetEmail,
+  emailAdmin,
 } = require('../../services/sendgrid');
 const findUserByEmail = require('../../utils/findUserByEmail');
 const findSignupMethodsForUser = require('../../utils/findSignupMethodsForUser');
@@ -189,6 +190,8 @@ router.post('/api/create-user', validateUsername, async (req, res) => {
 
   // Delete all Tickets that share the same email as the Ticket
   await Ticket.deleteMany({ email });
+
+  await emailAdmin(user.primaryEmail);
 
   req.login(user, err => {
     res.send({ success: true });
