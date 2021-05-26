@@ -8,6 +8,7 @@ const STRATEGIES = ['facebook', 'github', 'google', 'local', 'twitter'];
 
 module.exports.verifyCallback =
   strategyName => (req, accessToken, refreshToken, profile, done) => {
+    console.log(profile);
     const {
       emails: [{ value: email }],
     } = profile;

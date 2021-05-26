@@ -13,6 +13,7 @@ passport.use(
       consumerSecret: twitterConsumerSecret,
       userProfileURL:
         'https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true',
+      includeEmail: true,
       callbackURL: '/auth/twitter/callback',
       passReqToCallback: true,
       proxy: true,
