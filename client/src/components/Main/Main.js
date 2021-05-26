@@ -6,7 +6,7 @@ import Home from './Home/Home';
 const Main = () => (
   <div>
     <Header />
-    <Route path="/" component={Home} />
+    <Route path="/" exact component={Home} />
   </div>
 );
 

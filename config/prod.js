@@ -10,6 +10,8 @@ const {
   SIGHT_ENGINE_API_SECRET,
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,
+  GITHUB_CLIENT_ID,
+  GITHUB_CLIENT_SECRET,
 } = process.env;
 
 module.exports = {
@@ -24,4 +26,6 @@ module.exports = {
   sightengineAPISecret: SIGHT_ENGINE_API_SECRET,
   twitterConsumerKey: TWITTER_CONSUMER_KEY,
   twitterConsumerSecret: TWITTER_CONSUMER_SECRET,
+  githubClientID: GITHUB_CLIENT_ID,
+  githubClientSecret: GITHUB_CLIENT_SECRET,
 };

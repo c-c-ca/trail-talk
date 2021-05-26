@@ -23,7 +23,7 @@ import {
 class LoginForm extends Component {
   onSubmit = async ({ username, password }) => {
     const { success, message } = (
-      await axios.post('/auth/login', { username, password })
+      await axios.post('/api/login', { username, password })
     ).data;
 
     if (!success) {
@@ -34,24 +34,24 @@ class LoginForm extends Component {
     history.push('/');
   };
 
-  renderSignUpSection() {
-    return (
-      <div className={styles.SignUp}>
-        New to TrailTalk?
-        <Link className={styles.SignUpLink} to="/register">
-          Sign Up
-        </Link>
-      </div>
-    );
-  }
+  // renderSignUpSection() {
+  //   return (
+  //     <div className={styles.SignUp}>
+  //       New to TrailTalk?
+  //       <Link className={styles.SignUpLink} to="/register">
+  //         Sign Up
+  //       </Link>
+  //     </div>
+  //   );
+  // }
 
   renderThirdPartyButtons() {
     return (
       <div className={styles.ThirdPartyButtons}>
         <h3 className={styles.ThirdPartyHeader}>Or Sign In with</h3>
         <div className={styles.ThirdPartyButtonContainer}>
-          <FacebookButton text="Sign In with Facebook" />
-          <GitHubButton text="Sign In with GitHub" />
+          <FacebookButton text="Sign In with Facebook" to="/auth/facebook" />
+          <GitHubButton text="Sign In with GitHub" to="/auth/github" />
           <GoogleButton text="Sign In With Google" to="/auth/google" />
           <TwitterButton text="Sign In with Twitter" to="/auth/twitter" />
         </div>
@@ -59,9 +59,13 @@ class LoginForm extends Component {
     );
   }
 
-  renderSubmitButton(submitting) {
+  renderSubmitButton(submitting, valid, modifiedSinceLastSubmit) {
+    const enabled = valid || modifiedSinceLastSubmit;
     return (
-      <button className={styles.SubmitButton}>
+      <button
+        className={`${styles.SubmitButton} ${enabled || styles.ButtonDisabled}`}
+        disabled={!enabled}
+      >
         <div className={submitting ? styles.Hidden : null}>Log In</div>
         <div className={styles.LoaderWrapper}>
           {submitting && <Loader color="white" />}
@@ -78,10 +82,26 @@ class LoginForm extends Component {
     );
   }
 
+  renderForgotPassword() {
+    return (
+      <div className={styles.ForgotPasswordWrapper}>
+        <Link to="password-reset" className={styles.ForgotPassword}>
+          Forgot your password?
+        </Link>
+      </div>
+    );
+  }
+
   renderForm() {
     return (
       <Form onSubmit={this.onSubmit}>
-        {({ handleSubmit, submitting, submitError }) => (
+        {({
+          handleSubmit,
+          submitting,
+          submitError,
+          valid,
+          modifiedSinceLastSubmit,
+        }) => (
           <form className={styles.Form} onSubmit={handleSubmit}>
             {submitError && this.renderSubmitError(submitError)}
             <Field
@@ -98,7 +118,11 @@ class LoginForm extends Component {
               validate={validatePassword}
               component={Input}
             />
-            {this.renderSubmitButton(submitting)}
+            {this.renderSubmitButton(
+              submitting,
+              valid,
+              modifiedSinceLastSubmit
+            )}
           </form>
         )}
       </Form>
@@ -109,11 +133,11 @@ class LoginForm extends Component {
     return (
       <div className={styles.LoginForm}>
         <div className={styles.FormWrapper}>
-          <h1 className={styles.Header}>Log in to your account</h1>
           {this.renderForm()}
+          {this.renderForgotPassword()}
           {this.renderThirdPartyButtons()}
         </div>
-        {this.renderSignUpSection()}
+        {/* {this.renderSignUpSection()} */}
       </div>
     );
   }

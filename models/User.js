@@ -3,24 +3,31 @@ const { Schema } = mongoose;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new Schema({
-  // googleId: String,
-  twitterId: String,
-  username: {
-    type: String,
+  facebook: {
+    id: String,
+    token: String,
+    email: String,
   },
-  email: {
-    type: String,
-    required: false,
-    unique: true,
+  github: {
+    id: String,
+    token: String,
+    email: String,
   },
-  isActive: {
-    type: Boolean,
-    default: false,
+  google: {
+    id: String,
+    token: String,
+    email: String,
   },
-  emailToken: {
-    type: String,
+  twitter: {
+    id: String,
+    token: String,
+    email: String,
   },
-  usernameToken: {
+  local: {
+    email: String,
+    token: String,
+  },
+  primaryEmail: {
     type: String,
   },
 });

@@ -2,8 +2,16 @@ import React from 'react';
 import { IconGoogle } from '../../Icon/Icon';
 import styles from './GoogleButton.module.css';
 
-const GoogleButton = ({ text, to }) => (
-  <a className={styles.GoogleButton} href={to}>
+const GoogleButton = ({ text, to, disabled }) => (
+  <a
+    className={`${styles.GoogleButton} ${
+      disabled ? styles.Disabled : undefined
+    }`}
+    href={to}
+    onClick={e => {
+      if (disabled) e.preventDefault();
+    }}
+  >
     <div className={styles.GoogleIconWrapper}>
       <IconGoogle />
     </div>

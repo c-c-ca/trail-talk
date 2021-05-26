@@ -35,6 +35,12 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script type="text/javascript">
+      // Facebook adds adding a fragment #+=_ to the redirect_uri when this field is left blank
+      if (window.location.hash && window.location.hash == '#_=_') {
+        window.location.hash = '';
+      }
+    </script>
     <title>React App</title>
   </head>
   <body>

@@ -26,6 +26,16 @@ class Header extends Component {
             </Link>
           </li>,
           <li key="2">
+            <Link className={styles.HeaderButton} to="/connect">
+              Connect
+            </Link>
+          </li>,
+          <li key="3">
+            <Link className={styles.HeaderButton} to="/profile">
+              Profile
+            </Link>
+          </li>,
+          <li key="4">
             <a className={styles.HeaderButton} href="/api/logout">
               Logout
             </a>

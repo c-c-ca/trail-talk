@@ -34,7 +34,7 @@
   font-weight: 300;
   letter-spacing: 0.25rem;
   padding: 2rem;
-  transition: all 0.2s;
+  /* transition: all 0.2s; */
   position: relative;
 }
 
@@ -48,7 +48,7 @@
   background-color: hsl(28, 100%, 55%);
   transform: scaleX(0.1);
   transform-origin: bottom center;
-  transition: height 0.2s ease-in, transform 0.4s cubic-bezier(1, 0, 0, 1) 0.2s;
+  transition: height 0.1s ease-in, transform 0.2s cubic-bezier(1, 0, 0, 1) 0.1s;
 }
 
 .HeaderButton:hover::before,

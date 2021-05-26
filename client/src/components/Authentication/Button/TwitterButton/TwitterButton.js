@@ -2,8 +2,16 @@ import React from 'react';
 import { IconTwitter } from '../../Icon/Icon';
 import styles from './TwitterButton.module.css';
 
-const TwitterButton = ({ text, to }) => (
-  <a className={styles.TwitterButton} href={to}>
+const TwitterButton = ({ text, to, disabled }) => (
+  <a
+    className={`${styles.TwitterButton} ${
+      disabled ? styles.Disabled : undefined
+    }`}
+    href={to}
+    onClick={e => {
+      if (disabled) e.preventDefault();
+    }}
+  >
     <div className={styles.TwitterIconWrapper}>
       <IconTwitter />
     </div>

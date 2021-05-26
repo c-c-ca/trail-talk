@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
 import styles from './Register.module.css';
+import history from '../../../history';
 
 import RegisterForm from './RegisterForm/RegisterForm';
 import Success from './Success/Success';
+import Loader from '../../Loader/Loader';
 
 import { IconHappy, IconChat, IconCompass } from '../Icon/Icon';
 
@@ -48,13 +52,26 @@ const renderFeatureSection = () => {
 class Register extends Component {
   state = { registrationComplete: false };
 
-  onRegisterHandler = () => {
+  componentDidMount() {
+    if (this.props.auth) {
+      history.push('/');
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.auth) {
+      history.push('/');
+    }
+  }
+
+  onRegisterHandler = async email => {
+    await axios.post('/api/create-ticket', { email });
     this.setState({ registrationComplete: true });
   };
 
-  render() {
+  renderForm() {
     return (
-      <div className={styles.Register}>
+      <>
         <h1 className={styles.RegisterHeader}>
           Join for free today and start exploring
         </h1>
@@ -63,9 +80,26 @@ class Register extends Component {
           <RegisterForm onRegister={this.onRegisterHandler} />
         </div>
         {this.state.registrationComplete && <Success />}
-      </div>
+      </>
     );
+  }
+
+  renderContent() {
+    switch (this.props.auth) {
+      case null:
+        return <Loader />;
+      case false:
+        return this.renderForm();
+      default:
+        return;
+    }
+  }
+
+  render() {
+    return <div className={styles.Register}>{this.renderContent()}</div>;
   }
 }
 
-export default Register;
+const mapStateToProps = ({ auth }) => ({ auth });
+
+export default connect(mapStateToProps)(Register);

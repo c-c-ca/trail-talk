@@ -4,40 +4,42 @@ import { FORM_ERROR } from 'final-form';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import styles from './UsernameForm.module.css';
+import styles from './UsernameCreateForm.module.css';
 import * as actions from '../../../../actions';
 import history from '../../../../history';
 
 import Input from '../../Input/Input';
 import Loader from '../../Spinner/Loader/Loader';
+import PageLoader from '../../../Loader/Loader';
 
 import { validateUsername } from '../../../../utils/validation';
 import parseQueryString from '../../../../utils/parseQueryString';
 
-const extractToken = queryString => parseQueryString(queryString).token;
-
-class UsernameForm extends Component {
+class UsernameCreateForm extends Component {
   state = { token: null };
 
   async componentDidMount() {
-    const token = extractToken(this.props.location.search);
+    const { search } = this.props.location;
+    if (!search) {
+      return history.push('/');
+    }
 
-    if (await this.freshUsernameToken(token)) {
+    const { token } = parseQueryString(this.props.location.search);
+    if (token && (await this.ticketExists(token))) {
       return this.setState({ token });
     }
 
     history.push('/');
   }
 
-  async freshUsernameToken(token) {
-    return (await axios.post('/api/fresh-username-token', { token })).data;
+  async ticketExists(token) {
+    return (await axios.post('/api/ticket-exists', { token })).data;
   }
 
   onSubmit = async ({ username }) => {
     const { token } = this.state;
-
     const { success, message } = (
-      await axios.post('/auth/create-username', { token, username })
+      await axios.post('/api/create-user', { token, username })
     ).data;
 
     if (!success) {
@@ -103,9 +105,9 @@ class UsernameForm extends Component {
     );
   }
 
-  renderPage() {
-    return (
-      <div className={styles.UsernameForm}>
+  render() {
+    return this.state.token ? (
+      <div className={styles.UsernameCreateForm}>
         <div className={styles.FormWrapper}>
           <h1 className={styles.Header}>Welcome to TrailTalk!</h1>
           <h3 className={styles.SubHeader}>
@@ -114,14 +116,15 @@ class UsernameForm extends Component {
           {this.renderForm()}
         </div>
       </div>
+    ) : (
+      <PageLoader />
     );
-  }
-
-  render() {
-    return this.state.token ? this.renderPage() : null;
   }
 }
 
 const mapStateToProps = ({ auth }) => ({ auth });
 
-export default connect(mapStateToProps, actions)(withRouter(UsernameForm));
+export default connect(
+  mapStateToProps,
+  actions
+)(withRouter(UsernameCreateForm));

@@ -1,0 +1,41 @@
+.Form {
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FormBody {
+  --form-body-background-color: hsl(20, 30%, 94%);
+  --form-body-bottom-panel-background-color: hsl(10, 20%, 90%);
+  --form-body-inner-border: 1px solid hsl(10, 10%, 80%);
+
+  --form-header-color: hsl(20, 90%, 40%);
+
+  width: 46rem;
+  border-radius: 1rem;
+
+  background-color: var(--form-body-background-color);
+
+  overflow: hidden;
+}
+
+.FormWrapper {
+  padding: 3rem 4rem;
+}
+
+.FormContent {
+  /* margin-top: 2rem; */
+}
+
+.FormHeader {
+  color: var(--form-header-color);
+
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.15rem;
+  text-align: center;
+}

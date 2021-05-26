@@ -2,8 +2,16 @@ import React from 'react';
 import { IconFacebook } from '../../Icon/Icon';
 import styles from './FacebookButton.module.css';
 
-const FacebookButton = ({ text }) => (
-  <a className={styles.FacebookButton} href="/auth/facebook">
+const FacebookButton = ({ text, to, disabled }) => (
+  <a
+    className={`${styles.FacebookButton} ${
+      disabled ? styles.Disabled : undefined
+    }`}
+    href={to}
+    onClick={e => {
+      if (disabled) e.preventDefault();
+    }}
+  >
     <div className={styles.FacebookIconWrapper}>
       <IconFacebook />
     </div>

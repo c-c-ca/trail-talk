@@ -1,0 +1,45 @@
+.LinkAccount {
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 3rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  --color-primary-light: hsl(195, 86%, 64%);
+  --color-primary-dark: hsl(214, 84%, 56%);
+
+  background: var(--color-primary-dark); /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top left,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top left,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.LinkAccountHeader {
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+  margin-bottom: 2rem;
+  text-shadow: 0.5rem 0.5rem 3rem hsla(20, 40%, 95%, 0.5);
+  width: 40rem;
+  text-align: center;
+}
+
+.LinkAccountContent {
+  --link-account-border-radius: 1rem;
+
+  font-size: 1.5rem;
+
+  width: 72.5rem;
+  border-radius: var(--link-account-border-radius);
+}

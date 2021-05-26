@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 const { mongoURI, cookieKey } = require('./config/keys');
 require('./models/User');
+require('./models/Ticket');
 require('./services/passport');
 require('./services/sendgrid');
 
@@ -32,7 +33,11 @@ app.use(passport.session());
 
 app.use(require('./middlewares/sanitizeBody'));
 
-require('./routes/authRoutes')(app);
+const authenticationRoutes = require('./routes/authenticationRoutes');
+const authorizationRoutes = require('./routes/authorizationRoutes');
+
+app.use('/', authenticationRoutes);
+app.use('/', authorizationRoutes);
 
 if (process.env.NODE_ENV == 'production') {
   app.use(express.static('client/build'));
@@ -42,6 +47,23 @@ if (process.env.NODE_ENV == 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+
+  if (err.statusCode == 409) {
+    const { signupMethods, email } = err;
+    return res.redirect(
+      encodeURI(
+        // `/verify?signupMethods=${signupMethods.join(',')}&email=${email}`
+        `/verify?signupMethods=${signupMethods.join(',')}`
+      )
+    );
+  }
+  console.log(err);
+  res.redirect('/duplicate-email');
+  // res.status(statusCode).redirect('/login', { message });
+});
 
 const PORT = process.env.PORT || 5000;
 

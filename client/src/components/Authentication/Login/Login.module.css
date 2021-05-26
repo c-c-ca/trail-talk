@@ -1,12 +1,4 @@
 .Login {
-  min-height: 100vh;
-  min-width: 100vw;
-  padding: 3rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   --color-primary-light: #fdc830;
   --color-primary-dark: #f37335;
 

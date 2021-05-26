@@ -30,3 +30,8 @@
   font-family: 'Open Sans', sans-serif;
   margin: 0 auto;
 }
+
+.Disabled,
+.Disabled:hover {
+  background-color: hsl(0, 0%, 60%);
+}

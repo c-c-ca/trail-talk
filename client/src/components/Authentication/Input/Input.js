@@ -5,6 +5,7 @@ import {
   IconUser,
   IconEmail,
   IconKey,
+  IconLockOpen,
   IconCheck,
   IconCross,
 } from '../Icon/Icon';
@@ -20,6 +21,8 @@ const renderIcon = name => {
       return <IconEmail fill={ICON_COLOR} />;
     case 'password':
       return <IconKey fill={ICON_COLOR} />;
+    case 'confirm':
+      return <IconLockOpen fill={ICON_COLOR} />;
     default:
       return null;
   }
@@ -54,27 +57,28 @@ const renderError = ({
 const renderStatus = meta =>
   meta.validating && meta.active ? <Loader /> : renderValid(meta);
 
-const renderInput = (placeholder, input) => (
+const renderInput = (placeholder, disabled, input) => (
   <input
-    className={styles.Input}
+    className={`${styles.Input} ${disabled ? styles.Disabled : undefined}`}
     id={placeholder}
     {...input}
     placeholder={placeholder}
+    disabled={disabled}
     type={input.type}
     autoComplete="off"
   />
 );
 
-const Input = ({ placeholder, input, meta }) => (
+const Input = ({ placeholder, label, disabled, input, meta }) => (
   <div className={styles.FieldWrapper}>
     <label className={styles.Label} htmlFor={placeholder}>
-      {placeholder}
+      {label || placeholder}
     </label>
     <div className={styles.InputWrapper}>
       <div>
         <div className={styles.IconWrapperLeft}>{renderIcon(input.name)}</div>
         <div className={styles.IconWrapperRight}>{renderStatus(meta)}</div>
-        {renderInput(placeholder, input)}
+        {renderInput(placeholder, disabled, input)}
       </div>
     </div>
     {renderError(meta)}

@@ -17,8 +17,13 @@ const style = {
   },
 };
 
-const Button = ({ text, level, to }) => (
-  <Link className={styles.Button} style={style.backgroundColor(level)} to={to}>
+const Button = ({ text, level, to = '#', onClick = () => {} }) => (
+  <Link
+    className={styles.Button}
+    style={style.backgroundColor(level)}
+    to={to}
+    onClick={onClick}
+  >
     {text}
   </Link>
 );

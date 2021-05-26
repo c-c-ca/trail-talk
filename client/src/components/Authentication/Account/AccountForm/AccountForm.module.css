@@ -1,0 +1,142 @@
+.AccountForm {
+  --register-form-background-color: hsl(20, 40%, 100%);
+  --register-form-font-color: hsl(0, 96%, 45%);
+
+  --register-form-inner-border: 1px solid hsl(10, 10%, 80%);
+
+  background-color: var(--register-form-background-color);
+
+  position: relative;
+  top: 0;
+  left: 1rem;
+  margin: 2rem 0;
+  border-radius: var(--register-border-radius);
+  box-shadow: -0.5rem 0 1.5rem rgba(0, 0, 0, 0.3);
+  width: 55%;
+  overflow: hidden;
+
+  /* color: var(--register-form-font-color);
+  
+    font-size: 1.5rem;
+  
+    width: 70rem;
+    padding: 5rem;
+    border-radius: 1rem;
+  
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+
+.FormWrapper {
+  padding: 4rem 4rem 0;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.SubmitButton {
+  background-image: linear-gradient(
+    to right bottom,
+    hsl(34, 98%, 50%),
+    hsl(17, 89%, 50%)
+  );
+  color: #fff;
+
+  font-size: 1.8rem;
+  font-weight: 100;
+
+  width: 100%;
+  padding: 1.2rem 0;
+  margin: 1rem 0;
+
+  border-radius: 0.8rem;
+  border: none;
+  outline: none;
+
+  position: relative;
+}
+
+:not(.ButtonDisabled).SubmitButton:hover {
+  background-image: linear-gradient(
+    to right bottom,
+    hsl(34, 98%, 60%),
+    hsl(17, 89%, 60%)
+  );
+
+  cursor: pointer;
+}
+
+.ButtonDisabled {
+  background-image: linear-gradient(
+    to right bottom,
+    hsl(34, 78%, 50%),
+    hsl(17, 69%, 50%)
+  );
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.Hidden {
+  visibility: hidden;
+}
+
+.SubmitError {
+  /* background-color: var(--submit-error-background-color);
+    color: #fff; */
+
+  --submit-error-background-color: hsl(10, 90%, 45%);
+
+  color: var(--submit-error-background-color);
+  border: 1px solid var(--submit-error-background-color);
+  background-color: hsla(10, 90%, 75%, 0.1);
+
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  border-radius: 0.8rem;
+
+  width: 100%;
+  padding: 1.5rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.LoaderWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ThirdPartyButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: var(--register-form-inner-border);
+  margin-top: 2.5rem;
+}
+
+.ThirdPartyButtonContainer {
+  margin: 3rem 0 4rem;
+  width: 100%;
+}
+
+.ThirdPartyButtonContainer > * {
+  margin-bottom: 1rem;
+}
+
+.ThirdPartyButtonContainer > *:last-child {
+  margin-bottom: 0;
+}
+
+.ThirdPartyHeader {
+  background-color: var(--register-form-background-color);
+  transform: translateY(-50%);
+  text-align: center;
+  padding: 0 1.5rem;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1rem;
+}
